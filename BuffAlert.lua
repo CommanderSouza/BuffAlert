@@ -143,7 +143,7 @@ local eventHandlers = {
     ["You cast Demon Gate"] = function()
         PlaySoundFile("Interface\\AddOns\\BuffAlert\\demon.mp3")
         ShowTextures("Interface\\AddOns\\BuffAlert\\demon_breaking.tga")
-        start_timer(180)
+        start_timer(186)
     end,
     ["Enslave Demon fades from Infernal"] = function()
         PlaySoundFile("Interface\\AddOns\\BuffAlert\\demon-voice.mp3")
