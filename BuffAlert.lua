@@ -136,11 +136,15 @@ local eventHandlers = {
         DEFAULT_CHAT_FRAME:AddMessage('|cff9482c9' .. 'SHADOW TRANCE' .. '|r')
     end,
     ["You cast Inferno"] = function()
+        HideTextures()
+        stop_timer()
         PlaySoundFile("Interface\\AddOns\\BuffAlert\\demon.mp3")
         ShowTextures("Interface\\AddOns\\BuffAlert\\demon_breaking.tga")
         start_timer(180)
     end,
     ["You cast Demon Gate"] = function()
+        HideTextures()
+        stop_timer()
         PlaySoundFile("Interface\\AddOns\\BuffAlert\\demon.mp3")
         ShowTextures("Interface\\AddOns\\BuffAlert\\demon_breaking.tga")
         start_timer(186)
