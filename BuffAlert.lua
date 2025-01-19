@@ -8,11 +8,25 @@ events:RegisterEvent("CHAT_MSG_SPELL_SELF_DAMAGE")
 events:RegisterEvent("CHAT_MSG_SPELL_AURA_GONE_OTHER")
 events:RegisterEvent("CHAT_MSG_SPELL_AURA_GONE_PARTY")
 events:RegisterEvent("CHAT_MSG_SPELL_AURA_GONE_SELF")
-events:RegisterEvent("CHAT_MSG_COMBAT_FRIENDLY_DEATH")
-events:RegisterEvent("CHAT_MSG_COMBAT_HOSTILE_DEATH")
-events:RegisterEvent("CHAT_MSG_COMBAT_LOG")
 events:RegisterEvent("CHAT_MSG_SPELL_PERIODIC_CREATURE_BUFFS")
 events:RegisterEvent("CHAT_MSG_SPELL_PET_BUFF")
+events:RegisterEvent("CHAT_MSG_SPELL_PET_DAMAGE")
+events:RegisterEvent("CHAT_MSG_COMBAT_FRIENDLY_DEATH")
+events:RegisterEvent("CHAT_MSG_COMBAT_CREATURE_VS_CREATURE_HITS")
+events:RegisterEvent("CHAT_MSG_COMBAT_CREATURE_VS_PARTY_HITS")
+events:RegisterEvent("CHAT_MSG_COMBAT_HOSTILE_DEATH")
+events:RegisterEvent("CHAT_MSG_COMBAT_LOG")
+events:RegisterEvent("CHAT_MSG_SPELL_CREATURE_VS_CREATURE_BUFF")
+events:RegisterEvent("CHAT_MSG_SPELL_CREATURE_VS_CREATURE_DAMAGE")
+events:RegisterEvent("CHAT_MSG_SPELL_CREATURE_VS_PARTY_BUFF")
+events:RegisterEvent("CHAT_MSG_SPELL_CREATURE_VS_PARTY_DAMAGE")
+events:RegisterEvent("CHAT_MSG_SPELL_CREATURE_VS_SELF_BUFF")
+events:RegisterEvent("CHAT_MSG_SPELL_CREATURE_VS_SELF_DAMAGE")
+events:RegisterEvent("CHAT_MSG_COMBAT_MISC_INFO")
+events:RegisterEvent("CHAT_MSG_COMBAT_SELF_HITS")
+events:RegisterEvent("CHAT_MSG_COMBAT_PET_HITS")
+events:RegisterEvent("CHAT_MSG_COMBAT_PARTY_HITS")
+events:RegisterEvent("CHAT_MSG_SPELL_PERIODIC_SELF_DAMAGE")
 
 -- Create texture functions
 local function CreateTexture()
@@ -251,8 +265,8 @@ local eventHandlers = {
         HideTextures()
         stop_timer()
     end,
-    ["is afflicted by Power Overwhelming"] = function()
-        ShowSideTextures("Interface\\AddOns\\cooline\\po.tga")
+    ["Physical damage from your Power Overwhelming"] = function()
+        ShowSideTextures("Interface\\AddOns\\BuffAlert\\po.tga")
     end,
     ["Power Overwhelming fades from"] = function()
         HideSideTextures()
@@ -266,13 +280,12 @@ local eventHandlers = {
 
 -- Set up the OnEvent script
 events:SetScript("OnEvent", function()
-    -- Use the global variable arg1 for the message
-    if not arg1 then return end -- Safety check for nil values
+    if not arg1 then return end
 
     for msg, handler in pairs(eventHandlers) do
         if string.find(arg1, msg) then
-            handler() -- Call the corresponding function
-            break -- Exit loop after handling the first matching message
+            handler()
+            break
         end
     end
 end)
