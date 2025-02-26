@@ -239,31 +239,37 @@ local eventHandlers = {
         PlaySoundFile("Interface\\AddOns\\BuffAlert\\demon-voice.mp3")
         HideTextures()
         stop_timer()
+        HideSideTextures()
     end,
     ["Enslave Demon fades from Felguard"] = function()
         PlaySoundFile("Interface\\AddOns\\BuffAlert\\demon-voice.mp3")
         HideTextures()
         stop_timer()
+        HideSideTextures()
     end,
     ["Felguard dies"] = function()
         PlaySoundFile("Interface\\AddOns\\BuffAlert\\demon-voice.mp3")
         HideTextures()
         stop_timer()
+        HideSideTextures()
     end,
     ["Infernal dies"] = function()
         PlaySoundFile("Interface\\AddOns\\BuffAlert\\demon-voice.mp3")
         HideTextures()
         stop_timer()
+        HideSideTextures()
     end,
     ["You have slain Felguard"] = function()
         PlaySoundFile("Interface\\AddOns\\BuffAlert\\demon-voice.mp3")
         HideTextures()
         stop_timer()
+        HideSideTextures()
     end,
     ["You have slain Infernal"] = function()
         PlaySoundFile("Interface\\AddOns\\BuffAlert\\demon-voice.mp3")
         HideTextures()
         stop_timer()
+        HideSideTextures()
     end,
     ["Physical damage from your Power Overwhelming"] = function()
         ShowSideTextures("Interface\\AddOns\\BuffAlert\\po.tga")
